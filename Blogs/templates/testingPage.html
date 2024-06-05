@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block start %}
+<h1>Testing</h1>
+<h1>create Blog</h1>
+{% for u in user %}
+  <li>
+    {{u.username}} 
+    {% if u.id != request.u.id %} 
+      <a href="/">Follow</a>
+    {% endif %}
+  </li>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block start %}
+<form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <!--csrf_token check that data is going from this server -->
+  <!-- enctype="multipart/form-data" is used to send an image to backend if not present only text will go to backend and image will not -->
+  <h3>Create Blog</h3>
+  <hr>
+  {% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+    <div class="alert alert-primary" role="alert">
+      {{ message }}
+    </div>
+    {% endfor %}
+  </ul>
+  {% endif %}
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Blog Title</label>
+    <input name="title" type="text" class="form-control">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Blog Content</label>
+    <textarea name="content" class="form-control"></textarea>
+  </div>
+  <button type="submit" class="btn btn-success">Submit</button>
+</form>
+{% endblock %}
