@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -63,20 +63,23 @@ def createBlog(request):
   if request.method == 'POST':
     title = request.POST.get('title')
     content = request.POST.get('content')
+    blog_image = request.FILES.get('blog_image')
   
     Blog.objects.create(
       title = title,
       content = content,
-      author = request.user
+      author = request.user,
+      blog_image = blog_image
     )
     messages.info(request, "Blog Created Success fully")
-    print("Blog Created ")
     return redirect("/createBlog")
   return render(request, "createBlog.html")
 
-def displayBlog(request):
-  blogs = Blog.objects.all()
-  context = {'blogs':blogs}
+def displayBlog(request, id):
+  blog = Blog.objects.get(id = id)
+  # comment = blog.Comment.all() 'comment':comment
+
+  context = {'blog':blog}
   return render(request, "displayblog.html", context)
 
 def testingRequirement(request):
@@ -84,3 +87,32 @@ def testingRequirement(request):
   context = {'user':user}
   return render(request, "testingPage.html", context)
 
+def followToUser(request, id):
+  follow_to_user = get_object_or_404(User, id=id)
+  current_user = request.user
+  if current_user != follow_to_user:
+    if not Follow.objects.filter(follower=current_user, following=follow_to_user).exists():
+      Follow.objects.create(follower=current_user, following=follow_to_user)
+  return redirect('/')
+
+def likeToBlog(request, id):
+  blog = Blog.objects.get(id = id)
+  blog.like_count = blog.like_count + 1
+  blog.save()
+  return redirect('/')
+
+@login_required(login_url="/login")
+def commentToBlog(request, id):
+  blog = Blog.objects.get(id=id)
+  if request.method == 'POST':
+    comment_content = request.POST.get('comment')
+    print("I am Here", comment_content)
+    if comment_content:
+      Comment.objects.create(
+        blog=blog,
+        user=request.user,
+        comment=comment_content
+      )
+      messages.info(request, "Comment created successfully")
+      return redirect('displayBlog', id=blog.id)
+  return redirect('/')

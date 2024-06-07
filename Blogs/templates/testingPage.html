@@ -1,13 +1,16 @@
 {% extends "base.html" %}
 {% block start %}
 <h1>Testing</h1>
-<h1>create Blog</h1>
-{% for u in user %}
+<h1>Create Blog</h1>
+<ul>
+  {% for u in user %}
   <li>
-    {{u.username}} 
-    {% if u.id != request.u.id %} 
-      <a href="/">Follow</a>
+    {{ u.username }}
+    {% if u.id != request.user.id %}
+    <p>{{ u.id }}</p>
+    <a href="/followUser/{{u.id}}">Follow</a>
     {% endif %}
   </li>
-{% endfor %}
+  {% endfor %}
+</ul>
 {% endblock %}

@@ -1,13 +1,41 @@
 {% extends "base.html" %}
 {% block start %}
-  <h1>Blog List</h1>
-  <ul>
-    {% for blog in blogs %}
-    <li>
-      <h2>{{ blog.title }}</h2>
-      <h4>{{ blog.content }}</h4>
-      <p>Created by: {{ blog.author.username }}</p>
-    </li>
-    {% endfor %}
-  </ul>
+{% if messages %}
+<ul class="messages">
+  {% for message in messages %}
+  <div class="alert alert-primary" role="alert">
+    {{ message }}
+  </div>
+  {% endfor %}
+</ul>
+{% endif %}
+  <h1>{{ blog.title }}</h1>
+  <h4>{{ blog.content }}</h4>
+  <p>Created by: {{ blog.author.username }}</p>
+  {% if blog.blog_image %}
+    <img src="{{ blog.blog_image.url }}" alt="{{ blog.title }}" class="blog-image">
+  {% endif %}
+  <h1>Total Like : {{blog.like_count}}</h1>
+  <a href="/likeBlog/{{blog.id}}" class="btn btn-outline-primary">Like</a>
+  
+  <!-- ------------------------Comment here-------------------------- -->
+  <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h3>Write Comment</h3>
+    <hr>
+    {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+      <div class="alert alert-primary" role="alert">
+        {{ message }}
+      </div>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Blog Comment</label>
+      <textarea name="comment" class="form-control"></textarea>
+    </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
 {% endblock %}
