@@ -45,5 +45,5 @@ A fully functional blogging platform where users can create, read, and like blog
 
 1. **Clone the repository**
    ```sh
-   git clone https://github.com/yourusername/blogging-website.git
+   git clone git@github.com:Prasad1102/Stories.git
    cd blogging-website
