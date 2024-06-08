@@ -37,8 +37,8 @@ A fully functional blogging platform where users can create, read, and like blog
 
 ### Prerequisites
 
-- Python 3.x
-- Django 4.x
+- Python 3.8.10
+- Django 4.2.13
 - Virtualenv (optional but recommended)
 
 ### Installation
