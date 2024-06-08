@@ -22,6 +22,17 @@ A fully functional blogging platform where users can create, read, and like blog
   - View the list of blogs created by a user
   - Follow/Unfollow users
 
+ ### Home Page
+
+![Home Page](Blogs/static/Images/Home.png)
+
+### Blog Page
+
+![Home Page](Blogs/static/Images/Blog.png)
+
+### Profile Page
+
+![Profile Page](Blogs/static/Images/Profile.png)
 ## Setup
 
 ### Prerequisites
