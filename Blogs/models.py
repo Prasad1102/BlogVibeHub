@@ -21,9 +21,19 @@ class Blog(BaseModel):
   title = models.CharField(max_length=200)
   content = models.TextField()
   author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='blogs')
+  blog_image = models.ImageField(upload_to = "public/static/", default="/")
+  like_count = models.IntegerField(default=0)
 
   def __str__(self):
     return self.title
 
   class Meta:
     ordering = ['-created_at']
+
+class Comment(BaseModel):
+  blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='comments')
+  user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user')
+  comment = models.CharField(max_length=800)
+
+  def __str__(self):
+    return f'Comment by {self.user.username} on {self.blog.title}'

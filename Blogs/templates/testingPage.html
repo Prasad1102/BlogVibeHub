@@ -1,14 +1,23 @@
 {% extends "base.html" %}
 {% block start %}
-<h1>Testing</h1>
-<h1>Create Blog</h1>
-<ul>
+<style>
+  .flex{
+    display: flex;
+  }
+  .usernametest{
+    width: 50%;
+  }
+</style>
+
+<ul class="col-6 mx-auto card p-4 mt-3">
+  <h3>User List</h3>
   {% for u in user %}
-  <li>
-    {{ u.username }}
+  <li class="flex col-3 mt-2">  
     {% if u.id != request.user.id %}
-    <p>{{ u.id }}</p>
-    <a href="/followUser/{{u.id}}">Follow</a>
+    <div class="usernametest">
+      {{ u.username }}
+    </div>
+    <a href="/followUser/{{u.id}}" class="btn btn-primary">Follow</a>
     {% endif %}
   </li>
   {% endfor %}

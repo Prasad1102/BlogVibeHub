@@ -22,14 +22,13 @@
         <a href="/">Home</a>
         <a href="/about">About</a>
         <a href="/createBlog">Write Blog</a>
-        <a href="/displayBlog">Display Blog</a>
-        <a href="/testing">Test All Things</a>
+        <a href="/testing">Users</a>
         <div class="dropdown-center">
           {% if request.user.is_authenticated %}
           <div class="nav-item custom-dropdown-container">
             <button class="custom-dropdown-toggle">{{ request.user.username }}</button>
             <ul class="custom-dropdown-menu">
-              <li><a href="/">Profile</a></li>
+              <li><a href="/profile/{{request.user.id}}">Profile</a></li>
               <li><a href="/logout">Logout</a></li>
             </ul>
           </div>

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.models import User
+from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from .models import *
@@ -10,6 +11,31 @@ def home(request):
   blogs = Blog.objects.all()
   context = {'blogs':blogs}
   return render(request, "home.html", context)
+
+def displayProfile(request, id):
+  user = User.objects.get(id=id)
+  followers_ids = Follow.objects.filter(following=user).values_list('follower__id', flat=True)
+  followers_user = User.objects.filter(id__in=followers_ids)
+  followings_ids = Follow.objects.filter(follower=user).values_list('following__id', flat=True)
+  followings_user = User.objects.filter(id__in=followings_ids)
+  user_blogs = Blog.objects.filter(author=user)
+  is_following = False
+  if request.user.is_authenticated:
+    is_following = Follow.objects.filter(follower=request.user, following=user).exists()
+  print(is_following)
+  context = {
+    'user':user,
+    'followers':followers_user,
+    'followings':followings_user,
+    'blogs':user_blogs,
+    'followers_count':followers_user.count(),
+    'following_count':followings_user.count(),
+    'is_following':is_following
+  }
+  return render(request, "profile.html", context)
+
+def about(request):
+  return render(request, "about.html")
 
 def registerUser(request):
   if request.method == 'POST':
@@ -75,11 +101,15 @@ def createBlog(request):
     return redirect("/createBlog")
   return render(request, "createBlog.html")
 
+@login_required(login_url="/login")
 def displayBlog(request, id):
   blog = Blog.objects.get(id = id)
-  # comment = blog.Comment.all() 'comment':comment
-
-  context = {'blog':blog}
+  comments = blog.comments.all() # here we write comments because in django we use related name to access the data of related field
+  # blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='comments')
+  context = {
+    'blog':blog,
+    'comments':comments
+    }
   return render(request, "displayblog.html", context)
 
 def testingRequirement(request):
@@ -88,25 +118,27 @@ def testingRequirement(request):
   return render(request, "testingPage.html", context)
 
 def followToUser(request, id):
+  print("I come here in follow to user")
   follow_to_user = get_object_or_404(User, id=id)
   current_user = request.user
   if current_user != follow_to_user:
     if not Follow.objects.filter(follower=current_user, following=follow_to_user).exists():
       Follow.objects.create(follower=current_user, following=follow_to_user)
-  return redirect('/')
+    return redirect('/profile/{}/'.format(id))
+  return redirect('/profile/{}/'.format(id))
 
 def likeToBlog(request, id):
   blog = Blog.objects.get(id = id)
+  print("Hellow From like count")
   blog.like_count = blog.like_count + 1
   blog.save()
-  return redirect('/')
+  return redirect(reverse('displayBlog', args=[blog.id]))
 
 @login_required(login_url="/login")
 def commentToBlog(request, id):
   blog = Blog.objects.get(id=id)
   if request.method == 'POST':
     comment_content = request.POST.get('comment')
-    print("I am Here", comment_content)
     if comment_content:
       Comment.objects.create(
         blog=blog,
@@ -114,5 +146,8 @@ def commentToBlog(request, id):
         comment=comment_content
       )
       messages.info(request, "Comment created successfully")
-      return redirect('displayBlog', id=blog.id)
+      return redirect(reverse('displayBlog', args=[blog.id]))
   return redirect('/')
+
+
+  # ____________________________(PROFILE)_________________________

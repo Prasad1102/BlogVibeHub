@@ -60,17 +60,29 @@
   .likecount{
     color: rgb(73, 73, 73);
   }
+  .name-date{
+    display: flex;
+  }
+  .blog-username{
+    margin-right: 20px;
+  }
+  .blog-date{
+    color: rgb(160, 160, 160);
+    font-size: 15px;
+  }
 </style>
 <div class="blog-container">
   {% for blog in blogs %}
   <div class="blog-entry">
     <div class="blog-flex-container">
       <div class="blog-text-container">
-        <p class="blog-username">{{ blog.author.username }}</p>
-        <p>{{ blog.created_at|date:"F j, Y" }}</p>
+        <div class="name-date">
+          <p class="blog-username">{{ blog.author.username }}</p>
+          <p class="blog-date">{{ blog.created_at|date:"F j, Y" }}</p>
+        </div>        
         <a href="/displayBlog/{{blog.id}}" class="blog-title">{{ blog.title }}</a><br>
         <a href="/displayBlog/{{blog.id}}" class="blog-content">{{ blog.content | truncatechars:200 }}</a>
-        <p class="likecount">{{blog.like_count}}</p>
+        <p class="likecount"><a class="bi bi-heart" href="/displayBlog/{{blog.id}}"></a> {{blog.like_count}}</p>
       </div>
       <div class="blog-image">
         {% if blog.blog_image %}

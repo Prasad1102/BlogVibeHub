@@ -1,0 +1,222 @@
+/* Navbar styles */
+.navbar-container {
+  display: flex;
+  background-color: #F6BF17;
+  justify-content: center;
+  width: 100%;
+}
+
+.custom-navbar {
+  /* overflow: hidden; */
+  height: 70px;
+  display: flex;
+  background-color: #F6BF17;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  position: relative;
+  width: 93%;
+}
+
+.custom-navbar .custom-navbar-brand {
+  font-size: 30px;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  font-family: gt-super,
+    Georgia,
+    Cambria,
+    "Times New Roman",
+    Times,
+    serif;
+
+}
+
+.custom-navbar a {
+  font-size: 18px;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  padding: 0 10px;
+  text-decoration: none;
+}
+
+.custom-navbar a:hover {
+  color: rgb(51, 51, 51);
+}
+
+.custom-navbar .custom-navbar-right {
+  display: flex;
+  gap: 20px;
+}
+
+/* Dropdown styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-image: url();
+}
+
+.custom-dropdown-container {
+  position: relative;
+  z-index: 1000;
+  /* Ensure dropdown container is on top */
+}
+
+.custom-dropdown-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: white;
+}
+
+.custom-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 22px);
+  /* Position below the horizontal line */
+  left: 0;
+  background-color: rgba(102, 102, 102, 0.747);
+  padding: 10px;
+  border: 1px solid #ccc;
+  width: 160px;
+  z-index: 1001;
+  /* Ensure dropdown menu is on top */
+}
+
+.custom-dropdown-container:hover .custom-dropdown-menu,
+.custom-dropdown-container:focus-within .custom-dropdown-menu {
+  display: block;
+  /* Show dropdown on hover or focus */
+}
+
+.custom-dropdown-menu li {
+  list-style-type: none;
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+
+.custom-dropdown-menu li a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+}
+
+.custom-dropdown-menu li a:hover {
+  color: #201d1d;
+}
+
+/* Navbar divider styles */
+.custom-navbar-divider {
+  width: 100%;
+  height: 2px;
+  background-color: rgb(0, 0, 0);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+/* bottom container */
+.bottom-main-container {
+  background-color: black;
+  width: 100%;
+  height: max-content;
+  padding: 20px;
+  justify-content: center;
+  display: flex;
+  color: white;
+}
+
+.sub-bottom-container {
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+  padding: 0 20px;
+  justify-content: center;
+  position: relative;
+}
+
+.kk-name {
+  font-weight: 700;
+  font-size: 30 px;
+}
+
+.thirtythree {
+  width: 33.33%;
+  padding: 20px;
+}
+
+.kk-paratext {
+  color: #a7a7a7;
+}
+
+
+/* side scrole bar */
+body::-webkit-scrollbar {
+  width: 4px;
+}
+
+body::-webkit-scrollbar-track {
+  background: #000000;
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #63108a;
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: #ff8484;
+}
+
+/* Firefox Browsers */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #351919 #c5a0a0;
+}
+
+
+/* ___________________________________________(Design Field)______________________________________ */
+.blog-username {
+  display: flex;
+}
+
+.displayblog-name {
+  font-family: sohne,
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  text-decoration: none;
+  color: black;
+}
+
+.display-follow-button {
+  font-size: 20px;
+  margin-left: 10px;
+  color: blue;
+  text-decoration: none;
+}
+
+.title {
+  font-family: sohne,
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+  font-size: 40px;
+  font-weight: 900;
+}
+
+.commentusername {
+  text-decoration: none;
+  font-size: 20px;
+  color: rgb(65, 65, 65);
+}
+
+.display-comment {
+  color: rgb(88, 88, 88);
+  font-size: 18px;
+}
