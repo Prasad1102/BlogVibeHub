@@ -151,3 +151,9 @@ def commentToBlog(request, id):
 
 
   # ____________________________(PROFILE)_________________________
+def deleteBlog(request, id):
+  blog = Blog.objects.get(id=id)
+  if blog.author == request.user:
+    blog.delete()
+  # return redirect(reverse('profile', args=[request.user.id]))
+  return redirect(f'/profile/{request.user.id}')

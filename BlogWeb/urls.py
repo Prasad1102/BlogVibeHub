@@ -17,6 +17,7 @@ urlpatterns = [
     path('followUser/<int:id>/', followToUser, name="followToUser"),
     path('comment/<uuid:id>', commentToBlog, name="commentToBlog"),
     path('likeBlog/<uuid:id>', likeToBlog, name="likeToBlog"),
+    path('deleteBlog/<uuid:id>', deleteBlog, name="deleteBlog"),
     # -------------------------PROFILE
     path('profile/<int:id>/', displayProfile, name="displayProfile"),
     path('about/', about, name="about"),

@@ -1,3 +1,11 @@
+/* General styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-image: url();
+}
+
 /* Navbar styles */
 .navbar-container {
   display: flex;
@@ -7,11 +15,10 @@
 }
 
 .custom-navbar {
-  /* overflow: hidden; */
   height: 70px;
   display: flex;
   background-color: #F6BF17;
-    align-items: center;
+  align-items: center;
   justify-content: space-between;
   padding: 0 20px;
   position: relative;
@@ -23,13 +30,7 @@
   font-weight: bold;
   color: rgb(0, 0, 0);
   text-decoration: none;
-  font-family: gt-super,
-      Georgia,
-      Cambria,
-      "Times New Roman",
-      Times,
-      serif;
-
+  font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
 }
 
 .custom-navbar a {
@@ -49,18 +50,18 @@
   gap: 20px;
 }
 
-/* Dropdown styles */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  background-image: url();
+.custom-navbar .hamburger {
+  display: none;
+  cursor: pointer;
+  font-size: 24px;
+  background: none;
+  border: none;
 }
 
+/* Dropdown styles */
 .custom-dropdown-container {
   position: relative;
   z-index: 1000;
-  /* Ensure dropdown container is on top */
 }
 
 .custom-dropdown-toggle {
@@ -74,20 +75,17 @@ body {
   display: none;
   position: absolute;
   top: calc(100% + 22px);
-  /* Position below the horizontal line */
   left: 0;
   background-color: rgba(102, 102, 102, 0.747);
   padding: 10px;
   border: 1px solid #ccc;
   width: 160px;
   z-index: 1001;
-  /* Ensure dropdown menu is on top */
 }
 
 .custom-dropdown-container:hover .custom-dropdown-menu,
 .custom-dropdown-container:focus-within .custom-dropdown-menu {
   display: block;
-  /* Show dropdown on hover or focus */
 }
 
 .custom-dropdown-menu li {
@@ -115,7 +113,7 @@ body {
   left: 0;
 }
 
-/* bottom container */
+/* Bottom container */
 .bottom-main-container {
   background-color: black;
   width: 100%;
@@ -149,8 +147,7 @@ body {
   color: #a7a7a7;
 }
 
-
-/* side scrole bar */
+/* Side scrollbar */
 body::-webkit-scrollbar {
   width: 4px;
 }
@@ -175,8 +172,7 @@ body::-webkit-scrollbar-thumb:hover {
   scrollbar-color: #351919 #c5a0a0;
 }
 
-
-/* ___________________________________________(Design Field)______________________________________ */
+/* Design Field */
 .design-main-container {
   height: 500px;
   width: 100%;
@@ -202,23 +198,16 @@ body::-webkit-scrollbar-thumb:hover {
   text-align: right;
 }
 
-.stay-curious{
+.stay-curious {
   font-size: 95px;
-  font-family: gt-super,
-    Georgia,
-    Cambria,
-    "Times New Roman",
-    Times,
-    serif;
+  font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
 }
-.imp-text-para{
+
+.imp-text-para {
   font-size: 24px;
-  font-family: sohne,
-    "Helvetica Neue",
-    Helvetica,
-    Arial,
-    sans-serif;
+  font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
 .readButton {
   display: inline-block;
   padding: 10px 20px;
@@ -238,3 +227,28 @@ body::-webkit-scrollbar-thumb:hover {
   background-color: #333333;
 }
 
+/* Responsive styles */
+@media (max-width: 768px) {
+  .custom-navbar .custom-navbar-right {
+    display: none;
+  }
+
+  .custom-navbar .hamburger {
+    display: block;
+  }
+
+  .custom-navbar.active .custom-navbar-right {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #f6bf17;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    padding: 10px;
+  }
+
+  .custom-navbar.active .custom-navbar-right a {
+    padding: 10px 0;
+  }
+}
