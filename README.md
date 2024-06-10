@@ -3,7 +3,7 @@
 
 A fully functional blogging platform where users can create, read, and like blogs, follow other users, and see their posts. This project is built using Django.
 
-[Visit Stories Website](https://stories.pythonanywhere.com/)
+<a href="https://stories.pythonanywhere.com/" target="_blank">Visit Stories Website</a>
 
 ## Features
 
