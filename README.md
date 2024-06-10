@@ -22,17 +22,28 @@ A fully functional blogging platform where users can create, read, and like blog
   - View the list of blogs created by a user
   - Follow/Unfollow users
 
+ ### Home Page
+
+![Home Page](Blogs/static/Images/Home.png)
+
+### Blog Page
+
+![Home Page](Blogs/static/Images/Blog.png)
+
+### Profile Page
+
+![Profile Page](Blogs/static/Images/Profile.png)
 ## Setup
 
 ### Prerequisites
 
-- Python 3.x
-- Django 4.x
+- Python 3.8.10
+- Django 4.2.13
 - Virtualenv (optional but recommended)
 
 ### Installation
 
 1. **Clone the repository**
    ```sh
-   git clone https://github.com/yourusername/blogging-website.git
-   cd blogging-website
+   git clone git@github.com:Prasad1102/Stories.git
+   cd Stories
