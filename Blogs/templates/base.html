@@ -42,23 +42,23 @@
       <div class="custom-navbar-divider"></div>
     </nav>
   </div>
-  {% if not request.user.is_authenticated %}
-    <div class="design-main-container">
-      <div class="design-container">
-        <div class="design-text-container">
-          <h1 class="stay-curious">Stay curious.</h1>
-          <p class="imp-text-para">Discover stories, thinking, and expertise from writers on any topic.</p>
-          <a class="readButton" href="/">Start Readiing</a>
-        </div>
-        <div class="design-design-container">
-          <div class="design">
-            <img src="../static/Images/blog.gif" alt="Blog GIF" class="gif-image">
-          </div>
-        </div>
+{% if not request.user.is_authenticated %}
+<div class="design-main-container">
+  <div class="design-container">
+    <div class="design-text-container">
+      <h1 class="stay-curious">Stay curious.</h1>
+      <p class="imp-text-para">Discover stories, thinking, and expertise from writers on any topic.</p>
+      <a class="readButton" href="/">Start Reading</a>
+    </div>
+    <div class="design-design-container">
+      <div class="design">
+        <img src="../static/Images/blog.gif" alt="Blog GIF" class="gif-image">
       </div>
-    </div>  
-  {% endif %}
-  {% block start %}
+    </div>
+  </div>
+</div>
+{% endif %}
+{% block start %}
 
   {% endblock %}
   <script>

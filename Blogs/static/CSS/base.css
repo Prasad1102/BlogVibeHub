@@ -252,3 +252,15 @@ body::-webkit-scrollbar-thumb:hover {
     padding: 10px 0;
   }
 }
+
+/* Apply the animation to the dynamic quote */
+/* .dynamic-quote {
+  font-family: 'Orpheus';
+  font-style: italic;
+  font-size: 55px;
+  animation: changeSize 3s infinite;
+  background: #A7CFDF;
+background: linear-gradient(to right, #A7CFDF 0%, #23538A 100%);
+/* -webkit-background-clip: text; */
+/* -webkit-text-fill-color: transparent; */
+/* } */ 
