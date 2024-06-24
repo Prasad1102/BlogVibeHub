@@ -13,6 +13,7 @@ def home(request):
   return render(request, "home.html", context)
 
 def displayProfile(request, id):
+  print("I am in displayProfile D-Bug")
   user = User.objects.get(id=id)
   followers_ids = Follow.objects.filter(following=user).values_list('follower__id', flat=True)
   followers_user = User.objects.filter(id__in=followers_ids)
